@@ -165,8 +165,8 @@ namespace solver{
          double a = x.getA();
          double b = x.getB();
          double c = x.getC();
-         //cout << "a:" <<a <<  "b:" << b << "c: "<<c << endl;
-          if(a!=0 && b==0 && c!=0){
+  
+          if(a!=0 && b==0 && c>=0 && (c/-a)>=0){
                return sqrt(c/-a);
           }
           if(a==0 && b!=0){
@@ -181,11 +181,12 @@ namespace solver{
                return (-b + sqrt(temp)) / (2*a);
           }
 
-         else throw runtime_error {"There is no Real solution! "};
+         throw runtime_error {"There is no Real solution! "};
 
     }
 
     complex<double> solve (const ComplexVariable & x){
+
          complex<double> a = x.getA();
          complex<double> b = x.getB();
          complex<double> c = x.getC();
